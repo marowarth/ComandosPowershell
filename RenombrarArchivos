@@ -1,0 +1,13 @@
+$files = Get-ChildItem
+$baseName = "initiald-"
+$extension = $files[0].Extension  # Toma la extensión del primer archivo en la lista
+
+$counter = 101  # Valor inicial del contador
+
+foreach ($file in $files) {
+    $newName = "${baseName}$counter$extension"
+    Rename-Item -Path $file.FullName -NewName $newName
+    $counter++
+}
+
+Write-Host "Renombrado completado."
